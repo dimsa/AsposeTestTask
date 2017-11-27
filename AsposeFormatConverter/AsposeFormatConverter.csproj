@@ -46,6 +46,7 @@
     <Compile Include="Converters\XmlConverter.cs" />
     <Compile Include="FormatConverter.cs" />
     <Compile Include="IFormatConverter.cs" />
+    <Compile Include="Model\CarEntity.cs" />
     <Compile Include="Model\ICarEntity.cs" />
     <Compile Include="Model\IDataEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

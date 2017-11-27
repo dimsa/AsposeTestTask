@@ -21,8 +21,16 @@ namespace AsposeFormatConverter.Converters
         }
 
         public IStream ConvertTo(IDataEntity entity)
-        {
-            throw new NotImplementedException();
+        {            
+        /*    var cars = entity.GetCars();
+
+            foreach (var car in cars)
+            {
+                
+            }*/
+            return null;
+
+
         }
     }
 }
