@@ -40,8 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Converters\BinConverter.cs" />
+    <Compile Include="Converters\IDataConverter.cs" />
+    <Compile Include="Converters\IFormatDescriptor.cs" />
+    <Compile Include="Converters\XmlConverter.cs" />
     <Compile Include="FormatConverter.cs" />
+    <Compile Include="IFormatConverter.cs" />
+    <Compile Include="Model\ICarEntity.cs" />
+    <Compile Include="Model\IDataEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

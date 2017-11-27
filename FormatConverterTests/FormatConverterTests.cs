@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using AsposeFormatConverter.Converters;
+using AsposeFormatConverter.Model;
 using NUnit.Framework;
-using Assert = Microsoft.VisualStudio.TestTools.UnitTesting.Assert;
 
 namespace FormatConverterTests
 {
@@ -8,15 +10,29 @@ namespace FormatConverterTests
     public class CalculatorTest
     {
         [Test]
-        public void OpenXmlWorkProperlyTest()
+        public IDataEntity OpenDataFromFileTest(string fileName)
         {
-   
+            throw new NotImplementedException();
         }
 
         [Test]
-        public void OpenBinWorkProperlyTest()
+        public IDataEntity CreateEmptyDataTest()
         {
-
+            throw new NotImplementedException();
         }
+
+        [Test]
+        public void SaveDataFileTest(IDataEntity dataEntity, string fileName, IFormatDescriptor type)
+        {
+            throw new NotImplementedException();
+        }
+
+        [Test]
+        public IList<IFormatDescriptor> GetSupportedConversionTypesTest()
+        {
+            throw new NotImplementedException();
+        }
+
+
     }
 }
