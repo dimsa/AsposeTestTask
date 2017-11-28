@@ -15,9 +15,23 @@ namespace AsposeFormatConverter.Converters
 {
     public class XmlConverter : IDataConverter
     {
+
+        class XmlFormatDescriptor : IFormatDescriptor
+        {
+            public string GetName()
+            {
+                return "Xml";
+            }
+
+            public string GetDescription()
+            {
+                return "Xml converter";
+            }
+        }
+
         public IFormatDescriptor GetFormatDescriptor()
         {
-            throw new NotImplementedException();
+            return new XmlFormatDescriptor();
         }
 
         public IDataEntity ConvertFrom(Stream stream)

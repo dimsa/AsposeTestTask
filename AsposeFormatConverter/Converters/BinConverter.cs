@@ -9,7 +9,7 @@ using AsposeFormatConverter.Model;
 
 namespace AsposeFormatConverter.Converters
 {
-    class BinConverter : IDataConverter
+    public class BinConverter : IDataConverter
     {
         public IFormatDescriptor GetFormatDescriptor()
         {

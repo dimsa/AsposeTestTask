@@ -9,7 +9,7 @@ using AsposeFormatConverter.Model;
 
 namespace AsposeFormatConverter.Converters
 {
-    interface IDataConverter
+    public interface IDataConverter
     {
         IFormatDescriptor GetFormatDescriptor();
         IDataEntity ConvertFrom(Stream stream);
