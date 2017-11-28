@@ -52,13 +52,46 @@ namespace FormatConverterTests
             Assert.AreEqual(car.GetPrice(), testPrice);
         }
 
+        [Test]        
+        public void CarConstructorCorrectTest()
+        {
+            var testDate = new DateTime(2017, 11, 27);
+            var testBrandName = "CorrectBrand";
+            var testPrice = 17748;
+
+            var car = new CarEntity(testDate, testBrandName, testPrice);
+            
+            Assert.True(
+                car.GetBrandName() == testBrandName &&
+                car.GetDate() == testDate &&
+                car.GetPrice() == testPrice
+            );
+        }
+
+        [Test]
+        public void CarConstructorIncorrectTest()
+        {
+            var testDate = new DateTime(2017, 11, 27);
+            var testBrandName = "CorrectBrand";
+            var testPrice = 17748;
+
+            var car = new CarEntity(testDate, testBrandName, testPrice);
+
+            Assert.True(
+                car.GetBrandName() != "IncorrectBrand" &&
+                car.GetDate() != new DateTime(2017, 11, 28) &&
+                car.GetPrice() != 17747
+            );
+        }
+
         [Test]
         public void PriceGetterSetterIncorrectTest()
         {
+
             var car = new CarEntity();
-            var incorrectPrice = 17748;
-            car.SetPrice(17747);
-            Assert.AreNotEqual(car.GetPrice(), incorrectPrice);
+            var incorrectBrandName = "IncorrectBrand";
+            car.SetBrandName("CorrrectBrand");
+            Assert.AreNotEqual(car.GetBrandName(), incorrectBrandName);
         }
 
     }

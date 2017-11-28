@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
@@ -11,7 +12,7 @@ namespace AsposeFormatConverter.Converters
     interface IDataConverter
     {
         IFormatDescriptor GetFormatDescriptor();
-        IDataEntity ConvertFrom(IStream stream);
-        IStream ConvertTo(IDataEntity entity);
+        IDataEntity ConvertFrom(Stream stream);
+        Stream ConvertTo(IDataEntity entity);
     }
 }

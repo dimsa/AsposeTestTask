@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.ComTypes;
 using System.Text;
@@ -15,12 +16,12 @@ namespace AsposeFormatConverter.Converters
             throw new NotImplementedException();
         }
 
-        public IDataEntity ConvertFrom(IStream stream)
+        public IDataEntity ConvertFrom(Stream stream)
         {
             throw new NotImplementedException();
         }
 
-        public IStream ConvertTo(IDataEntity entity)
+        public Stream ConvertTo(IDataEntity entity)
         {
             throw new NotImplementedException();
         }

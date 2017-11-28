@@ -12,6 +12,18 @@ namespace AsposeFormatConverter.Model
         private string _brandName;
         private int _price;
 
+        public CarEntity(DateTime date, string brandName, int price)
+        {
+            SetDate(date);
+            SetBrandName(brandName);
+            SetPrice(price);
+        }
+
+        public CarEntity()
+        {
+            
+        }
+
         public DateTime GetDate()
         {
             return _date;
