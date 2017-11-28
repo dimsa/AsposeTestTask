@@ -36,13 +36,7 @@ namespace AsposeFormatConverter.Converters
 
         public IDataEntity ConvertFrom(Stream stream)
         {
-            stream.Seek(0, SeekOrigin.Begin);
-
-            string data;
-            using (var sr = new StreamReader(stream))
-            {
-                data = sr.ReadToEnd();               
-            }
+            var data = StreamHelper.StrFromStream(stream);
 
             var doc = XDocument.Parse(data);
             var res = XmlToDataEntity(doc);
@@ -104,18 +98,10 @@ namespace AsposeFormatConverter.Converters
 
             builder.AppendLine(@"</Document>");
 
-            var stream = SaveStrToStream(builder);
+            var stream = StreamHelper.StreamFromStr(builder.ToString());
             return stream;
         }
 
-        private MemoryStream SaveStrToStream(StringBuilder builder)
-        {
-            var stream = new MemoryStream();
-            using (var sw = new StreamWriter(stream, Encoding.Unicode))
-            {
-                sw.WriteLine(builder.ToString());
-            }
-            return stream;
-        }
+       
     }
 }

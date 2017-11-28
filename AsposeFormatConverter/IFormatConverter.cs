@@ -18,6 +18,6 @@ namespace AsposeFormatConverter
         void SaveDataFile(IDataEntity dataEntity, string fileName, IFormatDescriptor format);
 
         [DllExport("GetSupportedConversionFormats", CallingConvention = CallingConvention.Cdecl)]
-        IList<IFormatDescriptor> GetSupportedConversionFormats();
+        IFormatDescriptor[] GetSupportedConversionFormats();
     }
 }

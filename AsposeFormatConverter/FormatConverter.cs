@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using AsposeFormatConverter.Common;
 using AsposeFormatConverter.Converters;
 using AsposeFormatConverter.Model;
 
@@ -9,26 +10,48 @@ namespace AsposeFormatConverter
     public class FormatConverter : IFormatConverter
     {
         private readonly Dictionary<IFormatDescriptor, IDataConverter> _converters = new Dictionary<IFormatDescriptor, IDataConverter>();
-        private bool _initted;
+        private bool _initted;      
 
+        /*
+         * Trying to read file with any of registered converters
+         */
         public IDataEntity OpenDataFromFile(string fileName)
         {
-            throw new NotImplementedException();
+            var ms = StreamHelper.StreamFromFile(fileName);
+
+            if (ms == null)
+                return null;
+
+            foreach (var converter in _converters.Values)
+            {
+                try
+                {
+                    var entity = converter.ConvertFrom(ms);
+                    if (entity != null)
+                        return entity;
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
+            }
+            return null;
         }
 
         public IDataEntity CreateEmptyData()
         {
-            throw new NotImplementedException();
+            return new DataEntity();
         }
 
         public void SaveDataFile(IDataEntity dataEntity, string fileName, IFormatDescriptor type)
-        {
-            throw new NotImplementedException();    
+        {       
+            var stream = _converters[type].ConvertTo(dataEntity);
+            StreamHelper.StreamToFile(fileName, stream);
         }
 
-        public IList<IFormatDescriptor> GetSupportedConversionFormats()
+        public IFormatDescriptor[] GetSupportedConversionFormats()
         {
-            throw new NotImplementedException();
+            return _converters.Keys.ToArray();
         }
 
         /*
@@ -75,6 +98,5 @@ namespace AsposeFormatConverter
         {
             Init();
         }
-
     }
 }
