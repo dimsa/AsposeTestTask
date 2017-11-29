@@ -34,12 +34,13 @@ namespace AsposeFormatConverter.Converters
             return new XmlFormatDescriptor();
         }
 
-        public IDataEntity ConvertFrom(Stream stream)
+        public IDataEntity ConvertFromStream(Stream stream)
         {
             var data = StreamHelper.StrFromStream(stream);
 
             var doc = XDocument.Parse(data);
             var res = XmlToDataEntity(doc);
+
 
             return res;
         }
@@ -48,26 +49,28 @@ namespace AsposeFormatConverter.Converters
         {
             var entity = new DataEntity();
 
-            foreach (var carFromFile in doc.Descendants("Document"))
+            var cars = doc.Descendants("Car");
+
+            foreach (var carFromFile in cars)
             {
                 var car = entity.AddCar();
 
-                var at = GetAttribute(carFromFile, "Date");
+                var at = GetElement(carFromFile, "Date");
                 car.SetDate(Convert.ToDateTime(at));
 
-                at = GetAttribute(carFromFile, "BrandName");
+                at = GetElement(carFromFile, "BrandName");
                 car.SetBrandName(at);
 
-                at = GetAttribute(carFromFile, "Price");
+                at = GetElement(carFromFile, "Price");
                 car.SetPrice(Convert.ToInt32(at));
             }            
 
             return entity;
         }
 
-        private string GetAttribute(XElement node, string attrName)
+        private string GetElement(XElement node, string attrName)
         {
-            var el = node.Attribute(attrName);
+            var el = node.Element(attrName);// .Ancestors(attrName);// .Ancestors.Attribute(attrName);
 
             if (el == null)
             {
@@ -78,7 +81,7 @@ namespace AsposeFormatConverter.Converters
             return el.Value;
         }
 
-        public Stream ConvertTo(IDataEntity entity)
+        public Stream ConvertToStream(IDataEntity entity)
         {   
             var builder = new StringBuilder();
             builder.AppendLine(@"<?xml version=""1.0"" encoding=""UTF32Encoding-8""?>");

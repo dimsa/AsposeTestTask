@@ -12,7 +12,7 @@ namespace AsposeFormatConverter.Converters
     public interface IDataConverter
     {
         IFormatDescriptor GetFormatDescriptor();
-        IDataEntity ConvertFrom(Stream stream);
-        Stream ConvertTo(IDataEntity entity);
+        IDataEntity ConvertFromStream(Stream stream);
+        Stream ConvertToStream(IDataEntity entity);
     }
 }

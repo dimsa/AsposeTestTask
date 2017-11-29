@@ -16,12 +16,12 @@ namespace AsposeFormatConverter.Converters
             throw new NotImplementedException();
         }
 
-        public IDataEntity ConvertFrom(Stream stream)
+        public IDataEntity ConvertFromStream(Stream stream)
         {
             throw new NotImplementedException();
         }
 
-        public Stream ConvertTo(IDataEntity entity)
+        public Stream ConvertToStream(IDataEntity entity)
         {
             throw new NotImplementedException();
         }

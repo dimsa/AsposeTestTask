@@ -26,7 +26,7 @@ namespace AsposeFormatConverter
             {
                 try
                 {
-                    var entity = converter.ConvertFrom(ms);
+                    var entity = converter.ConvertFromStream(ms);
                     if (entity != null)
                         return entity;
                 }
@@ -45,7 +45,7 @@ namespace AsposeFormatConverter
 
         public void SaveDataFile(IDataEntity dataEntity, string fileName, IFormatDescriptor type)
         {       
-            var stream = _converters[type].ConvertTo(dataEntity);
+            var stream = _converters[type].ConvertToStream(dataEntity);
             StreamHelper.StreamToFile(fileName, stream);
         }
 

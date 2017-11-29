@@ -24,7 +24,7 @@ namespace AsposeFormatConverter.Common
                 return new MemoryStream();            
 
             var stream = new MemoryStream();
-            using (var sw = new StreamWriter(stream, Encoding.Unicode))
+            using (var sw = new StreamWriter(stream, Encoding.Unicode, data.Length, true))
             {
                 sw.WriteLine(data);
             }
