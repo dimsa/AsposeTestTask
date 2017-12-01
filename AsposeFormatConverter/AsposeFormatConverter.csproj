@@ -47,6 +47,7 @@
     <Compile Include="Common\Exceptions.cs" />
     <Compile Include="Common\StreamHelper.cs" />
     <Compile Include="Converters\BinConverter.cs" />
+    <Compile Include="Common\BinFormatterHelper.cs" />
     <Compile Include="Converters\IDataConverter.cs" />
     <Compile Include="Converters\IFormatDescriptor.cs" />
     <Compile Include="Converters\XmlConverter.cs" />
