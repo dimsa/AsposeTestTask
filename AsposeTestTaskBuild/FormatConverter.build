@@ -1,0 +1,28 @@
+﻿<?xml version="1.0"?>
+	<project name="AsposeFormatConverter" default="build" basedir=".">
+		<property name="project.dir" value="../AsposeFormatConverter" />
+		<target name="build">
+			<tstamp >
+				<formatter property="DSTAMP" pattern="yyyy-MM-dd"/>
+				<formatter property="TSTAMP" pattern="HH:mm"/>
+			</tstamp>
+		<echo message="Nuget packages restore started at ${DSTAMP} - ${TSTAMP}"/>
+		<exec program="nuget.exe" 
+			commandline="restore -PackagesDirectory ${project.dir}/packages"
+			workingdir="${project.dir}">
+		</exec>
+		<echo message="Nuget packages restore ended at ${DSTAMP} - ${TSTAMP}"/>
+
+		<echo message="${project.dir} build started at ${DSTAMP} - ${TSTAMP}"/>
+		<csc target="library" output="${project.dir}/antbuild/AsposeFormatConverter.dll">
+			<sources>
+				<include name="${project.dir}\**\*.cs" />		
+			</sources>
+			<references>                                  
+				<include name="${project.dir}/packages\**\*.dll" />
+			</references>
+		</csc>	
+		<echo message="${project.dir} build ended at ${DSTAMP} - ${TSTAMP}"/>
+		<echo message="Library build finished"/>
+    </target>
+  </project>

@@ -1,13 +1,15 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+VisualStudioVersion = 15.0.26730.16
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsposeTestTask", "AsposeTestTask\AsposeTestTask.csproj", "{F71BF029-2D31-4715-AA95-AED0F95A056B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsposeFormatConverter", "AsposeFormatConverter\AsposeFormatConverter.csproj", "{793FDB83-112A-48A8-AB24-CE4F95395449}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FormatConverterTests", "FormatConverterTests\FormatConverterTests.csproj", "{16A6DBEF-2469-46F2-81DD-D24E22AD4752}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AsposeTestTaskBuild", "AsposeTestTaskBuild\AsposeTestTaskBuild.csproj", "{BCA70AF7-2008-4DC6-B0B2-2BC29FFE8DF8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{16A6DBEF-2469-46F2-81DD-D24E22AD4752}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{16A6DBEF-2469-46F2-81DD-D24E22AD4752}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{16A6DBEF-2469-46F2-81DD-D24E22AD4752}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCA70AF7-2008-4DC6-B0B2-2BC29FFE8DF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCA70AF7-2008-4DC6-B0B2-2BC29FFE8DF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCA70AF7-2008-4DC6-B0B2-2BC29FFE8DF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCA70AF7-2008-4DC6-B0B2-2BC29FFE8DF8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

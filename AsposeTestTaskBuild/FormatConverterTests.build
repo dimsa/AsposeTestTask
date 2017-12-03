@@ -1,0 +1,29 @@
+﻿<?xml version="1.0"?>
+<project name="AsposeFormatTests" default="build" basedir=".">
+	<property name="project.dir" value="../FormatConverterTests" />
+
+
+	<target name="build">
+		<exec program="nuget.exe" 
+			commandline="restore -PackagesDirectory ${project.dir}/packages -Verbosity quiet"
+			workingdir="${project.dir}">
+		</exec>
+
+
+		<csc target="library" failonerror="false" output="${project.dir}/antbuild/FormatConverterTests.dll">
+			<sources>
+				<include name="${project.dir}/**/*.cs" />		
+			</sources>
+			<references>                                  
+				<include name="../AsposeFormatConverter/antbuild/*.dll" />
+				<include name="${project.dir}/packages/**/*.dll" />
+			</references>
+		</csc>	
+
+		<exec program="..\AsposeTestTaskBuild\packages\NUnit.ConsoleRunner.3.7.0\tools\nunit3-console.exe" workingdir="${project.dir}">
+			<arg value="${project.dir}/FormatConverterTests.csproj" />
+			<arg value="--config:Debug" />
+			<arg value="--result=TestResult.xml;format=nunit2" />
+		</exec>
+	</target>
+</project>

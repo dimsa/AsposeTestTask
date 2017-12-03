@@ -1,0 +1,24 @@
+﻿<?xml version="1.0"?>
+<project name="AsposeTEstTaskBuild" default="build" basedir=".">
+	<property name="build.FormatConverter" value="../AsposeFormatConverter" />
+	<property name="build.deploy" value="../../Release/" />
+	<target name="clean" description="Cleans build directory">
+		<delete dir="${build.deploy}" verbose="true" failonerror="false"/>
+		<mkdir dir="${build.deploy}"/>
+	</target>
+	<target name="release" depends="clean,build">
+		<tstamp>
+			<formatter property="DSTAMP" pattern="yyyy-MM-dd"/>
+			<formatter property="TSTAMP" pattern="HH:mm"/>
+		</tstamp>
+		<echo message="Build started at : ${DSTAMP} - ${TSTAMP}"/>
+		<echo message="CLR Runtime:= ${sys.clr.version}"/>
+	</target>
+	<target name="buildtestrunner">
+		<nant buildfile="AsposeTestTaskBuild.build"/>
+	</target>
+	<target name="build" description="Compiles projects" depends="buildtestrunner">
+		<nant buildfile="FormatConverter.build"/>
+		<nant buildfile="FormatConverterTests.build"/>
+	</target>
+</project>
