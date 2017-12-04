@@ -6,19 +6,16 @@
 				<formatter property="DSTAMP" pattern="yyyy-MM-dd"/>
 				<formatter property="TSTAMP" pattern="HH:mm"/>
 			</tstamp>
-		<echo message="Nuget packages restore started at ${DSTAMP} - ${TSTAMP}"/>
-		<exec program="nuget.exe" 
-			commandline="restore -PackagesDirectory ${project.dir}/packages"
-			workingdir="${project.dir}">
-		</exec>
+			<echo message="Nuget packages restore started at ${DSTAMP} - ${TSTAMP}"/>
+			<exec program="nuget.exe" 
+				commandline="restore -PackagesDirectory ${project.dir}/packages"
+				workingdir="${project.dir}">
+			</exec>
 
-		<exec program="nuget.exe" 
-			commandline="install NUnit.Console -OutputDirectory packages"
-			workingdir="${project.dir}">
-		</exec>
-		<echo message="Nuget packages restore ended at ${DSTAMP} - ${TSTAMP}"/>		
-
-		
-    </target>
-
-  </project>
+			<exec program="nuget.exe" 
+				commandline="install NUnit.Console -OutputDirectory packages"
+				workingdir="${project.dir}">
+			</exec>
+			<echo message="Nuget packages restore ended at ${DSTAMP} - ${TSTAMP}"/>				
+		</target>
+	</project>

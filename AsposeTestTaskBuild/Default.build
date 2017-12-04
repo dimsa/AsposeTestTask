@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0"?>
 <project name="AsposeTEstTaskBuild" default="build" basedir=".">
 	<property name="build.FormatConverter" value="../AsposeFormatConverter" />
-	<property name="build.deploy" value="../../Release/" />
+	<property name="release.dir" value="../AntRelease" />
+	<tstamp>
+		<formatter property="DSTAMP" pattern="yyyy-MM-dd"/>
+		<formatter property="TSTAMP" pattern="HH:mm"/>
+	</tstamp>
 	<target name="clean" description="Cleans build directory">
-		<delete dir="${build.deploy}" verbose="true" failonerror="false"/>
-		<mkdir dir="${build.deploy}"/>
+		<delete dir="${release.dir}" verbose="true" failonerror="false"/>
+		<mkdir dir="${release.dir}"/>
 	</target>
-	<target name="release" depends="clean,build">
-		<tstamp>
-			<formatter property="DSTAMP" pattern="yyyy-MM-dd"/>
-			<formatter property="TSTAMP" pattern="HH:mm"/>
-		</tstamp>
+	<target name="release" depends="clean,build">	
 		<echo message="Build started at : ${DSTAMP} - ${TSTAMP}"/>
 		<echo message="CLR Runtime:= ${sys.clr.version}"/>
 	</target>
@@ -18,7 +18,13 @@
 		<nant buildfile="AsposeTestTaskBuild.build"/>
 	</target>
 	<target name="build" description="Compiles projects" depends="buildtestrunner">
-		<nant buildfile="FormatConverter.build"/>
+		<nant buildfile="FormatConverter.build">
+			<properties>
+				<property name="release.dir" value="${release.dir}" />
+			</properties>
+		</nant>
 		<nant buildfile="FormatConverterTests.build"/>
+	  <echo message="Build ended at : ${DSTAMP} - ${TSTAMP}"/>
+	  <echo message="RELEASE FILES ARE IN THE ${path::get-full-path(release.dir)} folder"/>
 	</target>
 </project>

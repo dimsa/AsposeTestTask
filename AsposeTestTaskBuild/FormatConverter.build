@@ -24,5 +24,12 @@
 		</csc>	
 		<echo message="${project.dir} build ended at ${DSTAMP} - ${TSTAMP}"/>
 		<echo message="Library build finished"/>
+		<echo message="Copy to release folder started ${DSTAMP} - ${TSTAMP}"/>
+		  <copy todir="${release.dir}">
+		    <fileset basedir="${project.dir}/antbuild/">
+				<include name="*.dll" />
+		    </fileset>
+		  </copy>
+		  <echo message="Copy to release folder ended ${DSTAMP} - ${TSTAMP}"/>
     </target>
   </project>
