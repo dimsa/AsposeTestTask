@@ -51,6 +51,8 @@ namespace AsposeFormatConverter.Model
 
         public void SetPrice(int price)
         {
+            if (price < 0)
+                throw new ArgumentException("Price must be positive or 0");
             _price = price;
         }
     }

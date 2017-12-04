@@ -44,7 +44,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Common\Exceptions.cs" />
     <Compile Include="Common\StreamHelper.cs" />
     <Compile Include="Converters\BinConverter.cs" />
     <Compile Include="Common\BinFormatterHelper.cs" />

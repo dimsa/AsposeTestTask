@@ -85,6 +85,8 @@ namespace FormatConverterTests
             var testStream = StreamHelper.StreamFromFile(fileName);
 
             CheckStreamForEqual(stream, testStream);
+
+            File.Delete(fileName);
         }
     }
 }

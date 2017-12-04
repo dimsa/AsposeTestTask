@@ -94,5 +94,23 @@ namespace FormatConverterTests
             Assert.AreNotEqual(car.GetBrandName(), incorrectBrandName);
         }
 
+
+        [Datapoint]
+        public int ZeroPrice = 0;
+
+        [Datapoint]
+        public int NegativePrice = -10;
+
+        [Datapoint]
+        public int MinimumPrice = int.MinValue;
+
+        [Theory]
+        public void NotPositivePriceThrowExceptionTest(int price)
+        {
+            var car = new CarEntity();
+           
+            Assert.That(() => car.SetPrice(-1), Throws.ArgumentException, () => "Price must be positive or 0");
+        }
+
     }
 }

@@ -70,12 +70,11 @@ namespace AsposeFormatConverter.Converters
 
         private string GetElement(XElement node, string attrName)
         {
-            var el = node.Element(attrName);// .Ancestors(attrName);// .Ancestors.Attribute(attrName);
+            var el = node.Element(attrName);
 
             if (el == null)
             {
-                Exceptions.ElementNotFound(attrName);
-                return "";
+                throw new Exception("Element not found " + attrName);
             }
 
             return el.Value;
