@@ -49,6 +49,7 @@
     <Compile Include="DataConverterTests.cs" />
     <Compile Include="DataEntityTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="StreamHelperTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

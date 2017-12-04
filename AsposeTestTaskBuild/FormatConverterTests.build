@@ -9,7 +9,6 @@
 			workingdir="${project.dir}">
 		</exec>
 
-
 		<csc target="library" failonerror="false" output="${project.dir}/antbuild/FormatConverterTests.dll">
 			<sources>
 				<include name="${project.dir}/**/*.cs" />		
