@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text;
 
-namespace AsposeFormatConverter.Converters
+namespace AsposeFormatConverter.Common
 {
     public class BinFormatterHelper
     {

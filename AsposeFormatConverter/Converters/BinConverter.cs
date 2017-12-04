@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
+using AsposeFormatConverter.Common;
 using AsposeFormatConverter.Model;
 
 namespace AsposeFormatConverter.Converters

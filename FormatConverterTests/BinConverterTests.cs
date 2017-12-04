@@ -1,5 +1,6 @@
 ﻿using System.IO;
 using System.Text;
+using AsposeFormatConverter.Common;
 using AsposeFormatConverter.Converters;
 using NUnit.Framework;
 
