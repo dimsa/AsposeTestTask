@@ -46,6 +46,7 @@
     <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="AsposeTestTask.build" />
     <None Include="AsposeTestTaskBuild.build" />
     <None Include="Default.build" />
     <None Include="FormatConverter.build" />

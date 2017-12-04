@@ -1,0 +1,36 @@
+﻿<?xml version="1.0"?>
+<project name="AsposeTestTask" default="build" basedir=".">
+	<property name="project.dir" value="../AsposeTestTask" />  
+	<target name="build">
+    <tstamp >
+      <formatter property="DSTAMP" pattern="yyyy-MM-dd"/>
+      <formatter property="TSTAMP" pattern="HH:mm"/>
+    </tstamp>
+    <echo message="Nuget packages restore started at ${DSTAMP} - ${TSTAMP}"/>
+    <exec program="nuget.exe" 
+          commandline="restore -PackagesDirectory ${project.dir}/packages"
+          workingdir="${project.dir}">
+    </exec>
+    <echo message="Nuget packages restore ended at ${DSTAMP} - ${TSTAMP}"/>
+
+    <echo message="${project.dir} build started at ${DSTAMP} - ${TSTAMP}"/>
+    <csc target="exe" failonerror="false" output="${project.dir}\antbuild\AsposeTestTask.exe">
+      <sources>
+        <include name="${project.dir}\program.cs" />		
+      </sources>
+      <references>                             
+        <include name="${release.dir}\AsposeFormatConverter.dll" />
+      </references>
+    </csc>	
+    <echo message="${project.dir} build ended at ${DSTAMP} - ${TSTAMP}"/>
+    <echo message="Exe build finished"/>
+    <echo message="Copy to release folder started ${DSTAMP} - ${TSTAMP}"/>
+    <copy todir="${release.dir}">
+      <fileset basedir="${project.dir}/antbuild/">
+        <include name="*.dll" />
+        <include name="*.exe" />
+      </fileset>
+    </copy>
+    <echo message="Copy to release folder ended ${DSTAMP} - ${TSTAMP}"/>
+  </target>
+</project>

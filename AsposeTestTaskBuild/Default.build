@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0"?>
-<project name="AsposeTEstTaskBuild" default="build" basedir=".">
+<project name="AsposeTestTaskMasterBuild" default="report" basedir=".">
 	<property name="build.FormatConverter" value="../AsposeFormatConverter" />
 	<property name="release.dir" value="../AntRelease" />
 	<tstamp>
@@ -14,7 +14,7 @@
 		<echo message="Build started at : ${DSTAMP} - ${TSTAMP}"/>
 		<echo message="CLR Runtime:= ${sys.clr.version}"/>
 	</target>
-	<target name="buildtestrunner">
+	<target name="buildtestrunner" depends="clean">
 		<nant buildfile="AsposeTestTaskBuild.build"/>
 	</target>
 	<target name="build" description="Compiles projects" depends="buildtestrunner">
@@ -22,8 +22,18 @@
 			<properties>
 				<property name="release.dir" value="${release.dir}" />
 			</properties>
-		</nant>
+		</nant>	  
+
 		<nant buildfile="FormatConverterTests.build"/>
+	</target>	
+	<target name="builddemoproject" description="Compiles demo project" depends="build">
+		<nant buildfile="AsposeTestTask.build">
+			<properties>
+				<property name="release.dir" value="${path::get-full-path(release.dir)}" />
+			</properties>
+		</nant>
+	</target>
+	<target name="report" description="Write report" depends="build, builddemoproject">
 	  <echo message="Build ended at : ${DSTAMP} - ${TSTAMP}"/>
 	  <echo message="RELEASE FILES ARE IN THE ${path::get-full-path(release.dir)} folder"/>
 	</target>

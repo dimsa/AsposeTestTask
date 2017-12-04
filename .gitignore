@@ -262,3 +262,5 @@ __pycache__/
 /FormatConverterTests/libstoinclude
 /AsposeFormatConverter/antbuild
 /AntRelease/AsposeFormatConverter.dll
+/AntRelease
+/AsposeTestTask/antbuild
