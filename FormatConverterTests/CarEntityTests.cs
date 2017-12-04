@@ -109,7 +109,7 @@ namespace FormatConverterTests
         {
             var car = new CarEntity();
            
-            Assert.That(() => car.SetPrice(-1), Throws.ArgumentException, () => "Price must be positive or 0");
+            Assert.That(() => car.SetPrice(-1), Throws.ArgumentException.With.Message.EqualTo("Price must be positive or 0"));
         }
 
     }

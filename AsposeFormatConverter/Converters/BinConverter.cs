@@ -45,6 +45,9 @@ namespace AsposeFormatConverter.Converters
         {
             var carsCount = BitConverter.ToInt32(sr.ReadBytes(4), 0);
 
+            if (carsCount < 0)
+                throw new Exception("Car count can not be lesser than 0. File Incorrect.");
+
             for (var i = 0; i < carsCount; i++)
             {
                 var car = data.AddCar();
@@ -77,10 +80,20 @@ namespace AsposeFormatConverter.Converters
             var dateStr = BinFormatterHelper.AsciiByteToStringOfInt(sw.ReadBytes(8));
 
             var day = Convert.ToInt32(dateStr.Substring(0,2));
+            
+
             var month = Convert.ToInt32(dateStr.Substring(2, 2));
             var year = Convert.ToInt32(dateStr.Substring(4, 4));
 
-            return new DateTime(year, month, day);
+            try
+            {
+                return new DateTime(year, month, day);
+            }
+            catch (Exception)
+            {
+                throw new Exception("Date is incorrect");
+            }
+            
         }
 
         private void ReadAndCheckHeader(BinaryReader sw)

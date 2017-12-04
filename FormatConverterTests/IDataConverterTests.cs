@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Runtime.InteropServices;
 using AsposeFormatConverter.Converters;
 using AsposeFormatConverter.Model;
 using NUnit.Framework;
@@ -10,11 +9,10 @@ namespace FormatConverterTests
     [TestFixture(typeof(XmlConverter), "Xml", "Xml converter")]
     public class DataConverterTests<TConverter> where TConverter : IDataConverter, new()
     {
-        private IDataConverter _converter;
-        private IDataEntity _dataStub;
-        private string _desc;
-        private string _name;
-
+        private readonly IDataConverter _converter;
+        private readonly IDataEntity _dataStub;
+        private readonly string _desc;
+        private readonly string _name;
 
         public DataConverterTests(string name, string desc)
         {
@@ -28,7 +26,7 @@ namespace FormatConverterTests
         {
             var dataStub = new DataEntity();
             var len = 5;
-            for (int i = 0; i < len; i++)
+            for (var i = 0; i < len; i++)
             {
                 var car = dataStub.AddCar();
                 car.SetDate(DateByIterator(i));
