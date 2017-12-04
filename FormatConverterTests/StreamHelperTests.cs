@@ -18,6 +18,8 @@ namespace FormatConverterTests
         [Datapoint]
         public string TestStringFromStream = "Hello World!";
 
+        private string _fileName;
+
         [Theory]
         public void StrFromStreamTest(string text)
         {
@@ -75,18 +77,33 @@ namespace FormatConverterTests
             }
         }
 
+
+        [SetUp]
+        public void DeleteTestFiles() 
+        {
+            _fileName = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "test1.txt";
+
+            try
+            {
+                File.Delete(_fileName);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);                
+            }            
+        }
+
         [Theory]
         public void StreamToFileAndViceVersa(string text)
         {
-            var fileName = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments) + "\\" + "test1.txt";
             var stream = ArrangeStreamFromText(text);
-            StreamHelper.StreamToFile(fileName, stream);
+            StreamHelper.StreamToFile(_fileName, stream);
 
-            var testStream = StreamHelper.StreamFromFile(fileName);
+            var testStream = StreamHelper.StreamFromFile(_fileName);
 
             CheckStreamForEqual(stream, testStream);
 
-            File.Delete(fileName);
+
         }
     }
 }

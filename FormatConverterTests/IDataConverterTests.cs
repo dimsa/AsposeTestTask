@@ -1,28 +1,29 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.InteropServices;
 using AsposeFormatConverter.Converters;
 using AsposeFormatConverter.Model;
 using NUnit.Framework;
 
 namespace FormatConverterTests
 {
-    [TestFixture(typeof(BinConverter))]
-    [TestFixture(typeof(XmlConverter))]
+    [TestFixture(typeof(BinConverter), "Bin", "Bin converter")]
+    [TestFixture(typeof(XmlConverter), "Xml", "Xml converter")]
     public class DataConverterTests<TConverter> where TConverter : IDataConverter, new()
     {
         private IDataConverter _converter;
-        private IDataEntity _dataStub;        
+        private IDataEntity _dataStub;
+        private string _desc;
+        private string _name;
 
-        [SetUp]
-        public void CreateList()
+
+        public DataConverterTests(string name, string desc)
         {
             _converter = new TConverter();
+            _name = name;
+            _desc = desc;
             _dataStub = CreateDataStub();
         }
-
+      
         private DataEntity CreateDataStub()
         {
             var dataStub = new DataEntity();
@@ -51,6 +52,22 @@ namespace FormatConverterTests
         private DateTime DateByIterator(int i)
         {
             return new DateTime(2017, 12, i + 1);
+        }
+
+        [Test]
+        public void TestFormatDescriptorName()
+        {
+            var fd = _converter.GetFormatDescriptor();
+
+            Assert.AreEqual(fd.GetName(), _name);
+        }
+
+        [Test]
+        public void TestFormatDescriptorDescriptor()
+        {
+            var fd = _converter.GetFormatDescriptor();
+
+            Assert.AreEqual(fd.GetDescription(), _desc);
         }
 
         [Test]

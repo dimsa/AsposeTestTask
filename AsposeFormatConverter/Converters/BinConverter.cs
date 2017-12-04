@@ -144,7 +144,7 @@ namespace AsposeFormatConverter.Converters
             sw.Write(BinFormatterHelper.StrToBytes(brand));
         }
 
-        private static void WriteDate(DateTime date, BinaryWriter sw)
+        private void WriteDate(DateTime date, BinaryWriter sw)
         {
             var day = date.Day.ToString();
             var month = date.Month.ToString();
